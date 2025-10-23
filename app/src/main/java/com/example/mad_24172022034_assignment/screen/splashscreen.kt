@@ -25,13 +25,14 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun Splashscreen(){
+fun Splashscreen(
+    onNavigateToChat: () -> Unit
+){
     Column(
         modifier = Modifier
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Image
         Image(
             painter = painterResource(id = R.drawable.img),
             contentDescription = "HealthWis Image",
@@ -43,7 +44,6 @@ fun Splashscreen(){
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Title
         Text(
             text = "Welcome to HealthWis",
             fontSize = 30.sp,
@@ -54,7 +54,6 @@ fun Splashscreen(){
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Description
         Text(
             text = "Your personal guide to better health. Let's get started on your journey to wellness.",
             fontSize = 17.sp,
@@ -65,11 +64,10 @@ fun Splashscreen(){
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Get Started Button
         Button(
-            onClick = {},
+            onClick = onNavigateToChat,
             shape = RoundedCornerShape(16.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2196F3)), // blue color
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2196F3)),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp)
@@ -86,5 +84,5 @@ fun Splashscreen(){
 @Preview(showBackground = true)
 @Composable
 fun SplashscreenPreview(){
-    Splashscreen()
+    Splashscreen(onNavigateToChat = {})
 }

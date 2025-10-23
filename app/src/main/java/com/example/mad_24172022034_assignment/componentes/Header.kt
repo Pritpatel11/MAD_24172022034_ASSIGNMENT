@@ -12,19 +12,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun AppHeader() {
+fun AppHeader(string: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp)
     ) {
         Text(
-            text = "ChatBot",
+            text = string,
             style = MaterialTheme.typography.displaySmall.copy(
                 fontSize = 28.sp
             ),
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.align(Alignment.Center)
         )
+
     }
 }

@@ -51,6 +51,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.generativeai)
     implementation("androidx.compose.material:material-icons-extended:1.5.0")
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+    implementation("androidx.navigation:navigation-compose:2.9.5")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

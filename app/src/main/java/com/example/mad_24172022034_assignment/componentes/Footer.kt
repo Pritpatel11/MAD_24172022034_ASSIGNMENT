@@ -1,72 +1,90 @@
 package com.example.mad_24172022034_assignment.componentes
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import com.example.mad_24172022034_assignment.R
 
 @Composable
 fun BottomNavigationBar(
-    selectedIndex: Int = 0,
-    onItemSelected: (Int) -> Unit = {}
+    selectedScreen: String = "Chat", // Default to Chat screen
+    onTabSelected: (String) -> Unit = {}
 ) {
-    val items = listOf("Chat", "Tips", "Doctor", "Help")
-    val icons = listOf(
-        Icons.Filled.Chat,
-        Icons.Filled.Lightbulb,
-        Icons.Filled.Person,
-        Icons.Filled.Help
-    )
-
-    Surface(
-        shadowElevation = 8.dp,
-        tonalElevation = 8.dp,
-        modifier = Modifier.fillMaxWidth()
+    NavigationBar(
+        containerColor = Color.White,
+        contentColor = MaterialTheme.colorScheme.primary
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp),
-            horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            items.forEachIndexed { index, item ->
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .weight(1f)
-                        .clickable { onItemSelected(index) }
-                ) {
-                    Icon(
-                        imageVector = icons[index],
-                        contentDescription = item,
-                        tint = if (selectedIndex == index) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = item,
-                        fontSize = 12.sp,
-                        color = if (selectedIndex == index) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-                    )
-                }
-            }
-        }
-    }
-}
+        NavigationBarItem(
+            selected = selectedScreen == "Chat",
+            onClick = { onTabSelected("Chat") },
+            icon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_chat_24),
+                    contentDescription = "Chat"
+                )
+            },
+            label = { Text("Chat") },
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = MaterialTheme.colorScheme.primary,
+                selectedTextColor = MaterialTheme.colorScheme.primary,
+                unselectedIconColor = Color.Gray,
+                unselectedTextColor = Color.Gray
+            )
+        )
 
-@Preview(showBackground = true)
-@Composable
-fun BottomNavigationBarPreview() {
-    BottomNavigationBar()
+        NavigationBarItem(
+            selected = selectedScreen == "Tips",
+            onClick = { onTabSelected("Tips") },
+            icon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_lightbulb_24),
+                    contentDescription = "Tips"
+                )
+            },
+            label = { Text("Tips") },
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = MaterialTheme.colorScheme.primary,
+                selectedTextColor = MaterialTheme.colorScheme.primary,
+                unselectedIconColor = Color.Gray,
+                unselectedTextColor = Color.Gray
+            )
+        )
+
+        NavigationBarItem(
+            selected = selectedScreen == "Doctor",
+            onClick = { onTabSelected("Doctor") },
+            icon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.outline_contacts_product_24),
+                    contentDescription = "Doctor"
+                )
+            },
+            label = { Text("Doctor") },
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = MaterialTheme.colorScheme.primary,
+                selectedTextColor = MaterialTheme.colorScheme.primary,
+                unselectedIconColor = Color.Gray,
+                unselectedTextColor = Color.Gray
+            )
+        )
+
+        NavigationBarItem(
+            selected = selectedScreen == "Help",
+            onClick = { onTabSelected("Help") },
+            icon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.baseline_help_24),
+                    contentDescription = "Help"
+                )
+            },
+            label = { Text("Help") },
+            colors = NavigationBarItemDefaults.colors(
+                selectedIconColor = MaterialTheme.colorScheme.primary,
+                selectedTextColor = MaterialTheme.colorScheme.primary,
+                unselectedIconColor = Color.Gray,
+                unselectedTextColor = Color.Gray
+            )
+        )
+    }
 }
