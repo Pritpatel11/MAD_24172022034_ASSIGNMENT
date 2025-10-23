@@ -76,7 +76,6 @@ fun DoctorScreen(
                 onClick = {
                     if (questionText.text.isNotBlank()) {
                         isSubmitting = true
-                        // TODO: connect to backend / Gemini API if needed
                     }
                 },
                 shape = RoundedCornerShape(8.dp),
